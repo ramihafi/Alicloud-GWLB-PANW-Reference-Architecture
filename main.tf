@@ -869,6 +869,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app1_b_zone" {
   zone_id     = var.az_b
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_b,
     alicloud_privatelink_vpc_endpoint.gwlbe_app1_b,
   ]
 }
@@ -879,6 +883,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app1_c_zone" {
   zone_id     = var.az_c
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_c,
     alicloud_privatelink_vpc_endpoint.gwlbe_app1_c,
   ]
 }
@@ -889,6 +897,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app2_b_zone" {
   zone_id     = var.az_b
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_b,
     alicloud_privatelink_vpc_endpoint.gwlbe_app2_b,
   ]
 }
@@ -899,6 +911,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app2_c_zone" {
   zone_id     = var.az_c
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_c,
     alicloud_privatelink_vpc_endpoint.gwlbe_app2_c,
   ]
 }
@@ -909,6 +925,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_sec_b_zone" {
   zone_id     = var.az_b
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_b,
     alicloud_privatelink_vpc_endpoint.gwlbe_sec_b,
   ]
 }
@@ -919,6 +939,10 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_sec_c_zone" {
   zone_id     = var.az_c
 
     depends_on = [
+    alicloud_gwlb_load_balancer.gwlb,
+    alicloud_gwlb_listener.gwlb_listener,
+    alicloud_privatelink_vpc_endpoint_service.gwlb_svc,
+    alicloud_privatelink_vpc_endpoint_service_resource.gwlb_service_binding_c,
     alicloud_privatelink_vpc_endpoint.gwlbe_sec_c,
   ]
 }
