@@ -1,0 +1,21 @@
+############################################
+# terraform.tfvars.example
+############################################
+
+region                = "cn-hongkong"
+az_b                  = "cn-hongkong-b"
+az_c                  = "cn-hongkong-c"
+system_prefix         = "rhafi-gwlb"
+resource_group_name_regex = ""  # set to "^rg-ce$" if you want to pin to a specific RG
+
+cidr_security         = "10.10.0.0/16"
+cidr_app1             = "10.20.0.0/16"
+cidr_app2             = "10.30.0.0/16"
+
+instance_type_app     = "ecs.t6-c1m1.large"
+instance_type_fw      = "ecs.g5.xlarge"
+
+image_id_ubuntu       = "ubuntu_22_04_x64_20G_alibase_20251103.vhd"
+image_id_palo_alto    = "m-j6cbihe2j8lwzs754uge"
+
+key_pair_name         = "my-keypair"
