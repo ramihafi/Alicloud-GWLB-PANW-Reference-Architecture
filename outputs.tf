@@ -32,12 +32,12 @@ output "app2_server_private_ip" {
 
 output "app1_alb_public_address" {
   description = "Public address allocated to App1 ALB (may take time to appear in console)."
-  value       = alicloud_alb_load_balancer.app1_public_alb.address
+  value       = alicloud_alb_load_balancer.app1_public_alb.dns_name
 }
 
 output "app2_alb_public_address" {
   description = "Public address allocated to App2 ALB (may take time to appear in console)."
-  value       = alicloud_alb_load_balancer.app2_public_alb.address
+  value       = alicloud_alb_load_balancer.app2_public_alb.dns_name
 }
 
 output "gwlb_id" {
