@@ -1,0 +1,10 @@
+############################################
+# .gitignore
+############################################
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+crash.log
+*.log
+.DS_Store
