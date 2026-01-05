@@ -2,20 +2,20 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/aliyun/alicloud" {
-  version     = "1.262.1"
-  constraints = "~> 1.262.0"
+  version     = "1.267.0"
+  constraints = "~> 1.267.0"
   hashes = [
-    "h1:3Zq8vLK6YhoqGZPQf8sDmnlqZbJe4KKUNhyI/0IOMBU=",
-    "zh:078f7a4ddc0d6ad8e2e155ef1c46f360c8e4ccae977b31488a9e8cb856e0ec5f",
-    "zh:179c1497d1482af4098f4877c0e3315c1e0a21681870efebd5d3c692994b52f0",
-    "zh:2e3bb77fe09189bc5fc79d478dda83cd89f96fee7d005c3977e484a41188eb49",
-    "zh:33e865b079e275083d5fabca43541de5fa070d9c224eb96eb873bbf5a6bf9aca",
-    "zh:3f88be07d7fb0f67b72bf642dbe919363fd78a92a40ca9a87207f6855a9fec53",
-    "zh:5eebde73f6fedb4920ef92a13be7699a09a041a18f86c6d83c24ebbf157eeba8",
-    "zh:6dda434edce121feec7d20fdf7a0a3a8974721c1a267d05ac4f4618db09b8603",
-    "zh:aaa7fa08878a32291213ef5d4f0168ab416e01b218ab226c3f3ee380ea1451c1",
-    "zh:c194f724ff8b45328f5c48dcac7992b42d5d009e06cdd708c5362ce12c4e2999",
-    "zh:d0037e103e87a0d47f8231fe43a6bd44cef5f033a5ac8e0e5c6cf8b780d7cf23",
-    "zh:d565d067c41f2a203c7470240695ff788b61501b706214dd151d4de7aafd1bc5",
+    "h1:52aTezoZCw1szzZKwhR7fC9I/mzH6Oo2tveebRQBKKI=",
+    "zh:00784458cb1eb26b46a219d6051c1fb0ecfbd96f321e7950acf268bb9d82caba",
+    "zh:0b72b4554db8caf93c771be4c0fc2d6707e57b588381170b68605489a93e612f",
+    "zh:2df865ef708ddf438a4bac85b1b8cbdf9775b51d966e33591f1e23f519f7f5bd",
+    "zh:6025654339795ebda6374ec1740bcbae9d954a9a76a237205db19314172267f8",
+    "zh:74ac76afdb550c5b7e0145f43f58aebc16875f915f73dff726c71649db9caecb",
+    "zh:8e57a9480c172c13ad3db5c605dd85dfd9859472e87e7e6a7d3e05ba09f3d9cd",
+    "zh:9c7843ad5417650e838d38c8bb83d14d2ec69d2ba08e54c1701114ab70cf6538",
+    "zh:ab7f3640fff8c2d7ef10bbfaf57c405c2354d66b4ee50970a5cb17f820dc6fc4",
+    "zh:b840041ca7b4f34f5706a93e94b974ed6d21a9fd64e48c74c444dbc38061e5fb",
+    "zh:be31c20f9d2e2e034d19e5998a20349a012038f54472aaf48f9060ac0ecd4c3c",
+    "zh:d79aa2a19e7031dc835ea848c779587ceeaf97620d36953fa03cc90f777268fa",
   ]
 }

@@ -6,7 +6,7 @@ terraform {
   required_providers {
     alicloud = {
       source  = "aliyun/alicloud"
-      version = "~> 1.262.0"
+      version = "~> 1.267.0"
     }
   }
 }
@@ -867,36 +867,60 @@ resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app1_b_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_app1_b.id
   vswitch_id  = alicloud_vswitch.app1_gwlb_b.id
   zone_id     = var.az_b
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_app1_b,
+  ]
 }
 
 resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app1_c_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_app1_c.id
   vswitch_id  = alicloud_vswitch.app1_gwlb_c.id
   zone_id     = var.az_c
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_app1_c,
+  ]
 }
 
 resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app2_b_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_app2_b.id
   vswitch_id  = alicloud_vswitch.app2_gwlb_b.id
   zone_id     = var.az_b
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_app2_b,
+  ]
 }
 
 resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_app2_c_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_app2_c.id
   vswitch_id  = alicloud_vswitch.app2_gwlb_c.id
   zone_id     = var.az_c
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_app2_c,
+  ]
 }
 
 resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_sec_b_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_sec_b.id
   vswitch_id  = alicloud_vswitch.sec_gwlb_b.id
   zone_id     = var.az_b
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_b,
+  ]
 }
 
 resource "alicloud_privatelink_vpc_endpoint_zone" "gwlbe_sec_c_zone" {
   endpoint_id = alicloud_privatelink_vpc_endpoint.gwlbe_sec_c.id
   vswitch_id  = alicloud_vswitch.sec_gwlb_c.id
   zone_id     = var.az_c
+
+    depends_on = [
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_c,
+  ]
 }
 
 ########################
@@ -969,6 +993,12 @@ resource "alicloud_route_entry" "sec_nat_b_to_gwlbe_10_8" {
   destination_cidrblock = "10.0.0.0/8"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_sec_b.id
+
+    depends_on = [
+    alicloud_route_table_attachment.sec_nat_b_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_b,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_sec_b_zone,
+  ]
 }
 
 resource "alicloud_route_table" "sec_nat_c_rt" {
@@ -987,6 +1017,12 @@ resource "alicloud_route_entry" "sec_nat_c_to_gwlbe_10_8" {
   destination_cidrblock = "10.0.0.0/8"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_sec_c.id
+
+    depends_on = [
+    alicloud_route_table_attachment.sec_nat_c_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_c,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_sec_c_zone,
+  ]
 }
 
 resource "alicloud_route_table" "sec_gwlbe_b_rt" {
@@ -1055,6 +1091,12 @@ resource "alicloud_route_entry" "sec_att_b_to_gwlbe_default" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_sec_b.id
+
+    depends_on = [
+    alicloud_route_table_attachment.sec_att_b_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_b,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_sec_b_zone,
+  ]
 }
 
 resource "alicloud_route_table" "sec_att_c_rt" {
@@ -1073,6 +1115,12 @@ resource "alicloud_route_entry" "sec_att_c_to_gwlbe_default" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_sec_c.id
+
+    depends_on = [
+    alicloud_route_table_attachment.sec_att_c_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_sec_c,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_sec_c_zone,
+  ]
 }
 
 ########################
@@ -1131,6 +1179,12 @@ resource "alicloud_route_entry" "app1_alb_b_default_to_gwlbe" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_app1_b.id
+
+    depends_on = [
+    alicloud_route_table_attachment.app1_alb_b_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_app1_b,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_app1_b_zone,
+  ]
 }
 
 resource "alicloud_route_table" "app1_alb_c_rt" {
@@ -1149,6 +1203,12 @@ resource "alicloud_route_entry" "app1_alb_c_default_to_gwlbe" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_app1_c.id
+
+    depends_on = [
+    alicloud_route_table_attachment.app1_alb_c_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_app1_c,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_app1_c_zone,
+  ]
 }
 
 resource "alicloud_route_table" "app1_gwlbe_b_rt" {
@@ -1254,6 +1314,12 @@ resource "alicloud_route_entry" "app2_alb_b_default_to_gwlbe" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_app2_b.id
+
+    depends_on = [
+    alicloud_route_table_attachment.app2_alb_b_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_app2_b,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_app2_b_zone,
+  ]
 }
 
 resource "alicloud_route_table" "app2_alb_c_rt" {
@@ -1272,6 +1338,12 @@ resource "alicloud_route_entry" "app2_alb_c_default_to_gwlbe" {
   destination_cidrblock = "0.0.0.0/0"
   nexthop_type          = "GatewayLoadBalancerEndpoint"
   nexthop_id            = alicloud_privatelink_vpc_endpoint.gwlbe_app2_c.id
+
+    depends_on = [
+    alicloud_route_table_attachment.app2_alb_c_rt_attach,
+    alicloud_privatelink_vpc_endpoint.gwlbe_app2_c,
+    alicloud_privatelink_vpc_endpoint_zone.gwlbe_app2_c_zone,
+  ]
 }
 
 resource "alicloud_route_table" "app2_gwlbe_b_rt" {
