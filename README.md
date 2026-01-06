@@ -225,18 +225,24 @@ Internet
 
  Manual Step Required (Critical)
 
-For each App VPC, you must manually add routes in the Gateway Route Table:
+For each App VPC, you must manually add below routes in the Gateway Route Table:
 
 Example (App1)
 
 Destination          Next Hop
-10.20.4.0/24         GWLBe App1-B
-10.20.14.0/24        GWLBe App1-C
+10.20.2.0/24         GWLBe App1-B
+10.20.12.0/24        GWLBe App1-C
 
-How to Do It:
+Example (App2)
+
+Destination          Next Hop
+10.30.2.0/24         GWLBe App2-B
+10.30.12.0/24        GWLBe App2-C
+
+How to Do It for App1:
 	1.	Go to VPC → Route Tables
-	2.	Select Gateway Route Table
-	3.	Add Custom Route
+	2.	Select Gateway Route Table 
+	3.	Edit the system route of the destination in the above tables
 	4.	Choose Gateway Load Balancer Endpoint as next hop
 	5.	Save
 
